@@ -110,6 +110,18 @@ export default function Home() {
           </button>
         </div>
       )}
+      <section className="mt-16 text-sm text-gray-600">
+  <h2 className="font-semibold text-lg">
+    Free Keyword Research Tool for Small Businesses
+  </h2>
+
+  <p className="mt-2">
+    This free keyword research tool helps small business owners
+    find long-tail, low-competition keyword ideas using real
+    Google search suggestions. No paid SEO tools required.
+  </p>
+</section>
+
     </main>
   )
 }
