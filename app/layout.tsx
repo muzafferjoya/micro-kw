@@ -1,10 +1,11 @@
 import "./globals.css"
 
 export const metadata = {
-  title: "Free Keyword Research Tool for Small Businesses",
-  description:
-    "Find long-tail keyword ideas without expensive SEO tools.",
+  verification: {
+    google: "5Ac2VpoA6NiVCiEg3thCU12IydBb8G70E",
+  },
 }
+
 
 export default function RootLayout({
   children,
