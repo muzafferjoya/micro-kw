@@ -122,6 +122,16 @@ export default function Home() {
   </p>
 </section>
 
+<section style={{ marginTop: 60 }}>
+  <h2>Popular Keyword Pages</h2>
+  <ul>
+    <li><a href="/keyword/bakery-business">Bakery Business Keywords</a></li>
+    <li><a href="/keyword/yoga-studio">Yoga Studio Keywords</a></li>
+    <li><a href="/keyword/online-tuition">Online Tuition Keywords</a></li>
+  </ul>
+</section>
+
+
     </main>
   )
 }
