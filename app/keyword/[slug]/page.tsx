@@ -1,27 +1,30 @@
 import { keywordData } from "@/lib/keywords"
 import { notFound } from "next/navigation"
 
-type Props = {
-  params: { slug: string }
-}
+export const dynamicParams = false
 
 export function generateStaticParams() {
-  return Object.keys(keywordData).map((slug) => ({ slug }))
+  return Object.keys(keywordData).map((slug) => ({
+    slug,
+  }))
 }
 
-export function generateMetadata({ params }: Props) {
+export function generateMetadata({ params }: { params: { slug: string } }) {
   const data = keywordData[params.slug]
   if (!data) return {}
 
   return {
     title: `${data.title} Keyword Ideas | Free Keyword Research Tool`,
-    description: `Free keyword ideas and questions for ${data.title.toLowerCase()}. Perfect for SEO and content planning.`,
+    description: `Free keyword ideas and questions for ${data.title.toLowerCase()}.`,
   }
 }
 
-export default function KeywordPage({ params }: Props) {
+export default function Page({ params }: { params: { slug: string } }) {
   const data = keywordData[params.slug]
-  if (!data) notFound()
+
+  if (!data) {
+    notFound()
+  }
 
   return (
     <main style={{ maxWidth: 800, margin: "auto", padding: "40px 20px" }}>
@@ -29,7 +32,6 @@ export default function KeywordPage({ params }: Props) {
 
       <p>
         Free keyword research ideas for <strong>{data.title}</strong>.
-        Ideal for bloggers, small businesses, and creators.
       </p>
 
       <h2>Keyword Ideas</h2>
@@ -46,11 +48,8 @@ export default function KeywordPage({ params }: Props) {
         ))}
       </ul>
 
-      <hr />
-
       <p>
-        🔎 Looking for more keywords? Go back to the{" "}
-        <a href="/">homepage</a>.
+        ← <a href="/">Back to Home</a>
       </p>
     </main>
   )
