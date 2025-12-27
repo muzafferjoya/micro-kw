@@ -1,10 +1,11 @@
-import { keywordData } from "@/lib/keywords"
+import { MetadataRoute } from "next"
+import { KEYWORDS } from "@/data/keywords"
 
-export default function sitemap() {
+export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://micro-kw.vercel.app"
 
-  const keywordPages = Object.keys(keywordData).map((slug) => ({
-    url: `${baseUrl}/keyword/${slug}`,
+  const keywordUrls = KEYWORDS.map((k) => ({
+    url: `${baseUrl}/keyword/${k.replace(/\s+/g, "-")}`,
     lastModified: new Date(),
   }))
 
@@ -13,6 +14,6 @@ export default function sitemap() {
       url: baseUrl,
       lastModified: new Date(),
     },
-    ...keywordPages,
+    ...keywordUrls,
   ]
 }
