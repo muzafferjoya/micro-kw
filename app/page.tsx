@@ -124,6 +124,15 @@ export default function Home() {
     find long-tail, low-competition keyword ideas using real
     Google search suggestions. No paid SEO tools required.
   </p>
+
+  <p className="mt-10 text-sm">
+  <a href="/html-sitemap" className="underline">
+    View full keyword sitemap
+  </a>
+</p>
+
+  
+  
 </section>
 
 <section style={{ marginTop: 60 }}>
