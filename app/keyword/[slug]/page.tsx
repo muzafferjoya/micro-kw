@@ -1,4 +1,5 @@
-import { Metadata } from "next"
+import type { Metadata } from "next"
+import { KEYWORDS } from "@/data/keywords"
 
 type PageProps = {
   params: Promise<{
@@ -6,50 +7,63 @@ type PageProps = {
   }>
 }
 
-/* =======================
-   SEO METADATA (FIXED)
-======================= */
+/* ✅ Static pages generation */
+export async function generateStaticParams() {
+  return KEYWORDS.map((k) => ({
+    slug: k.replace(/\s+/g, "-"),
+  }))
+}
+
+/* ✅ SEO metadata (NO ERROR) */
 export async function generateMetadata(
   props: PageProps
 ): Promise<Metadata> {
-
-  const params = await props.params
-  const keyword = params.slug.replace(/-/g, " ")
+  const { slug } = await props.params
+  const keyword = slug.replace(/-/g, " ")
 
   return {
     title: `${keyword} business ideas | Micro KW`,
-    description: `Complete guide on ${keyword} business including cost, profit and how to start.`,
+    description: `Learn how to start a ${keyword} business with low investment and high profit potential.`,
   }
 }
 
-/* =======================
-   PAGE COMPONENT (FIXED)
-======================= */
+/* ✅ Page render (NO ERROR) */
 export default async function KeywordPage(props: PageProps) {
-
-  const params = await props.params
-  const keyword = params.slug.replace(/-/g, " ")
+  const { slug } = await props.params
+  const keyword = slug.replace(/-/g, " ")
 
   return (
-    <main style={{ padding: "20px" }}>
-      <h1>{keyword} business ideas</h1>
+    <main className="max-w-3xl mx-auto p-10">
+      <h1 className="text-3xl font-bold capitalize">
+        {keyword} business ideas
+      </h1>
 
-      <p>
-        Starting a {keyword} business is one of the best micro business ideas in 2025.
+      <p className="mt-4">
+        Starting a {keyword} business is one of the best
+        micro business ideas in 2025.
       </p>
 
-      <h2>Why start a {keyword} business?</h2>
-      <p>
+      <h2 className="mt-6 font-semibold text-xl">
+        Why start a {keyword} business?
+      </h2>
+
+      <p className="mt-2">
         Low investment, high demand and scalable opportunity.
       </p>
 
-      <h2>Investment & Profit</h2>
-      <p>
+      <h2 className="mt-6 font-semibold text-xl">
+        Investment & Profit
+      </h2>
+
+      <p className="mt-2">
         Initial investment is low with healthy profit margins.
       </p>
 
-      <h2>How to start {keyword} business</h2>
-      <ul>
+      <h2 className="mt-6 font-semibold text-xl">
+        How to start {keyword} business
+      </h2>
+
+      <ul className="list-disc ml-6 mt-2">
         <li>Market research</li>
         <li>Registration</li>
         <li>Setup</li>
@@ -57,11 +71,4 @@ export default async function KeywordPage(props: PageProps) {
       </ul>
     </main>
   )
-}
-export async function generateStaticParams() {
-  return [
-    { slug: "bakery-business" },
-    { slug: "yoga-studio" },
-    { slug: "online-tuition" },
-  ]
 }

@@ -2,8 +2,12 @@
 
 import { useState } from "react"
 import { getKeywords } from "./actions/keywords"
+import Link from "next/link"
+
+
 
 export default function Home() {
+
   const [query, setQuery] = useState("")
   const [country, setCountry] = useState("india")
   const [data, setData] = useState<any>(null)
@@ -125,9 +129,10 @@ export default function Home() {
 <section style={{ marginTop: 60 }}>
   <h2>Popular Keyword Pages</h2>
   <ul>
-    <li><a href="/keyword/bakery-business">Bakery Business Keywords</a></li>
-    <li><a href="/keyword/yoga-studio">Yoga Studio Keywords</a></li>
-    <li><a href="/keyword/online-tuition">Online Tuition Keywords</a></li>
+  <li><Link href="/keyword/bakery-business">Bakery Business Keywords</Link></li>
+  <li><Link href="/keyword/yoga-studio">Yoga Studio Keywords</Link></li>
+  <li><Link href="/keyword/online-tuition">Online Tuition Keywords</Link></li>
+
   </ul>
 </section>
 
@@ -135,3 +140,5 @@ export default function Home() {
     </main>
   )
 }
+
+
