@@ -17,7 +17,12 @@ export async function generateMetadata(
   { params }: Props
 ): Promise<Metadata> {
   const { slug } = await params
+  const normalize = (s: string) => s.toLowerCase().trim()
+
   const keyword = formatKeyword(slug)
+  if (!KEYWORDS.map(normalize).includes(normalize(keyword))) {
+    notFound()
+  }
 
   if (!KEYWORDS.includes(keyword)) return {}
 
@@ -50,7 +55,6 @@ export default async function KeywordPage({ params }: Props) {
       <Script
         id="faq-schema"
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
@@ -88,7 +92,7 @@ export default async function KeywordPage({ params }: Props) {
 <Script
   id="breadcrumb-schema"
   type="application/ld+json"
-  strategy="afterInteractive"
+  
   dangerouslySetInnerHTML={{
     __html: JSON.stringify({
       "@context": "https://schema.org",
