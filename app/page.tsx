@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { getKeywords } from "./actions/keywords"
 import Link from "next/link"
+import { KEYWORDS } from "@/data/keywords"
 
 
 
@@ -145,6 +146,28 @@ export default function Home() {
 
   </ul>
 </section>
+
+<section className="max-w-5xl mx-auto px-6 py-12">
+  <h2 className="text-2xl font-bold mb-4">
+    Popular Micro Business Ideas (2025)
+  </h2>
+
+  <ul className="grid grid-cols-2 md:grid-cols-3 gap-4">
+    {KEYWORDS.slice(0, 30).map(k => (
+      <li key={k}>
+        <Link
+          href={`/keyword/${k.replace(/\s+/g, "-")}`}
+          className="text-blue-600 hover:underline"
+        >
+          {k} business ideas
+        </Link>
+      </li>
+    ))}
+  </ul>
+</section>
+
+
+
 
 
     </main>
