@@ -1,14 +1,16 @@
 type PageProps = {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
-export default function KeywordPage({ params }: PageProps) {
+export default async function KeywordPage({ params }: PageProps) {
+  const resolvedParams = await params;
+
   return (
     <div>
       <h1>Keyword Page</h1>
-      <p>Slug: {params.slug}</p>
+      <p>Slug: {resolvedParams.slug}</p>
     </div>
-  )
+  );
 }
