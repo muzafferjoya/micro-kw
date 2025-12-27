@@ -47,9 +47,14 @@ export default async function KeywordPage({ params }: Props) {
   if (!KEYWORDS.includes(keyword)) notFound()
 
   return (
-    <article className="prose mx-auto px-4 py-8">
+    <article className="prose prose-lg max-w-3xl mx-auto px-6 py-10">
 
       <h1>{keyword} business ideas</h1>
+
+      <p className="text-sm text-gray-500">
+        Updated for 2025 • Beginner friendly • No paid tools required
+      </p>
+
 
       <p>
         Starting a <strong>{keyword}</strong> business is one of the best micro business
@@ -76,12 +81,12 @@ export default async function KeywordPage({ params }: Props) {
 
       <hr className="my-8" />
 
-      <h2>Related business ideas</h2>
+      <h2>Related micro business ideas</h2>
 
       <ul>
         {KEYWORDS
           .filter(k => k !== keyword)
-          .slice(0, 5)
+          .slice(0, 10)
           .map(k => (
             <li key={k}>
               <Link href={`/keyword/${k.replace(/\s+/g, "-")}`}>
@@ -90,6 +95,40 @@ export default async function KeywordPage({ params }: Props) {
             </li>
           ))}
       </ul>
+      <h2>Is {keyword} business profitable in 2025?</h2>
+      <p>
+        Yes, the <strong>{keyword}</strong> business is profitable in 2025 due to
+        increasing demand, low startup cost, and scalable business models.
+      </p>
+
+      <h2>Skills required to start {keyword} business</h2>
+      <ul>
+        <li>Basic business management</li>
+        <li>Customer handling</li>
+        <li>Marketing and promotion</li>
+        <li>Financial planning</li>
+      </ul>
+
+      <h2>Common mistakes to avoid</h2>
+      <ul>
+        <li>Starting without market research</li>
+        <li>Underestimating expenses</li>
+        <li>Ignoring online marketing</li>
+        <li>Poor customer experience</li>
+      </ul>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>How much investment is required?</h3>
+      <p>
+        The investment depends on scale, but most {keyword} businesses can
+        be started with low to moderate investment.
+      </p>
+
+      <h3>Can I start {keyword} business from home?</h3>
+      <p>
+        Yes, many {keyword} businesses can be started from home with minimal setup.
+      </p>
+
 
     </article>
   )

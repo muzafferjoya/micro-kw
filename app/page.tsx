@@ -55,6 +55,7 @@ export default function Home() {
       <h1 className="text-3xl font-bold">
         Free Keyword Research Tool
       </h1>
+      
 
       <p className="text-gray-600 mt-2">
         Simple keyword ideas for small businesses.
